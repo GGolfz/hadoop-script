@@ -65,9 +65,11 @@ for i in ${datanode[*]}
 do
     echo "echo $i >> ./hadoop/etc/hadoop/workers" >> ./hadoop-worker.sh
 done
-echo "echo \"<configuration><property><name>fs.default.name</name><value>hdfs://$namenodeip:9000/</value></property></configuration>\" > ./hadoop/etc/hadoop/core-site.xml
-echo \"<configuration><property><name>yarn.nodemanager.aux-services</name><value>mapreduce_shuffle</value></property><property><name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name><value>org.apache.hadoop.mapred.ShuffleHandler</value></property></configuration>\" > ./hadoop/etc/hadoop/yarn-site.xml
-
+echo "
+echo \"<configuration><property><name>fs.default.name</name><value>hdfs://$namenodeip:9000/</value></property></configuration>\" > ./hadoop/etc/hadoop/core-site.xml
+echo \"
+<configuration><property><name>yarn.nodemanager.aux-services</name><value>mapreduce_shuffle</value></property>
+<property><name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name><value>org.apache.hadoop.mapred.ShuffleHandler</value></property></configuration>\" > ./hadoop/etc/hadoop/yarn-site.xml
 echo \"alias hadoop=\"~/hadoop/hadoop-3.1.4/bin/hadoop\"
 source ~/hadoop/etc/hadoop/hadoop-env.sh\" >> ~/.bashrc
 source ~/.bashrc
