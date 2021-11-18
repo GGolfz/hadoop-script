@@ -32,7 +32,7 @@ sudo chown -R hadoop:hadoop /usr/local/hadoop/hdfs/data
 
 echo "$namenodeip" > ./hadoop/etc/hadoop/masters
 rm ./hadoop/etc/hadoop/workers
-rm ~/.ssh/config
+mkdir ~/.ssh
 for i in ${datanode[*]}
 do
     echo "$i" >> ./hadoop/etc/hadoop/workers
