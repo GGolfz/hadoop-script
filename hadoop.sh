@@ -32,9 +32,14 @@ sudo chown -R hadoop:hadoop /usr/local/hadoop/hdfs/data
 
 echo "$namenodeip" > ./hadoop/etc/hadoop/masters
 rm ./hadoop/etc/hadoop/workers
+rm ~/.ssh/config
 for i in ${datanode[*]}
 do
     echo "$i" >> ./hadoop/etc/hadoop/workers
+    echo "Host $i
+    HostName $i
+    User hadoop
+    IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
 done
 
 echo "<configuration><property><name>fs.default.name</name><value>hdfs://$namenodeip:9000/</value></property></configuration>" > ./hadoop/etc/hadoop/core-site.xml
