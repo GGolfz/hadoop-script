@@ -19,3 +19,4 @@
 1) Make sure that you have enough space on your node.
 2) Make sure that current user is hadoop and has sudo permission.
 3) You need to configure ssh by yourselve.
+4) Please try to setup manually using hadoop doc for understanding setup process.
