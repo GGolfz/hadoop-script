@@ -13,7 +13,7 @@
 9) Run `./hadoop-worker.sh` to start installation.
 10) Wait for installation
 11) Configure SSH to connect to your worker nodes (generate and add to .ssh/authorized_keys).
-12) Running Hadoop using `./hadoop/sbin/start-all.sh`
+12) Running Hadoop using `sudo ./hadoop/bin/hdfs namenode -format && ./hadoop/sbin/start-all.sh`
 
 ## Caution
 1) Make sure that you have enough space on your node.
