@@ -66,7 +66,7 @@ sudo chown -R hadoop:hadoop /usr/local/hadoop/hdfs/data
 echo \"<configuration><property><name>fs.default.name</name><value>hdfs://$namenodeip:9000/</value></property></configuration>\" > ./hadoop/etc/hadoop/core-site.xml
 echo \"
 <configuration>
-<property><name>yarn.resourcemanager.hostname</name><value>10.148.0.3</value></property>
+<property><name>yarn.resourcemanager.hostname</name><value>$namenodeip</value></property>
 <property><name>yarn.nodemanager.aux-services</name><value>mapreduce_shuffle</value></property>
 <property><name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name><value>org.apache.hadoop.mapred.ShuffleHandler</value></property></configuration>\" > ./hadoop/etc/hadoop/yarn-site.xml
 echo \"source ~/hadoop/etc/hadoop/hadoop-env.sh\" >> ~/.bashrc
