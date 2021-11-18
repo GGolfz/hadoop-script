@@ -55,4 +55,4 @@ echo \"<configuration><property><name>yarn.nodemanager.aux-services</name><value
 
 echo \"alias hadoop=\"~/hadoop/hadoop-3.1.4/bin/hadoop\"\nsource ~/hadoop/etc/hadoop/hadoop-env.sh\" >> ~/.bashrc\n
 source ~/.bashrc\n
-"
+" >> ./hadoop-worker.sh
