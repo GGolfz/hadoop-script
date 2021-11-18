@@ -31,6 +31,7 @@ sudo mkdir -p /usr/local/hadoop/hdfs/data
 sudo chown -R hadoop:hadoop /usr/local/hadoop/hdfs/data
 
 echo "$namenodeip" > ./hadoop/etc/hadoop/masters
+rm ./hadoop/etc/hadoop/workers
 for i in ${datanode[*]}
 do
     echo "$i" >> ./hadoop/etc/hadoop/workers
@@ -59,7 +60,8 @@ source ./hadoop/etc/hadoop/hadoop-env.sh
 sudo mkdir -p /usr/local/hadoop/hdfs/data
 sudo chown -R hadoop:hadoop /usr/local/hadoop/hdfs/data
 
-echo \"$namenodeip\" > ./hadoop/etc/hadoop/masters" > ./hadoop-worker.sh
+echo \"$namenodeip\" > ./hadoop/etc/hadoop/masters
+rm ./hadoop/etc/hadoop/workers" > ./hadoop-worker.sh
 
 for i in ${datanode[*]}
 do
