@@ -47,8 +47,7 @@ echo "<configuration><property><name>dfs.replication</name><value>3</value></pro
 echo "<configuration><property><name>yarn.nodemanager.aux-services</name><value>mapreduce_shuffle</value></property><property><name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name><value>org.apache.hadoop.mapred.ShuffleHandler</value></property></configuration>" > ./hadoop/etc/hadoop/yarn-site.xml
 echo "<configuration><property><name>mapreduce.jobtracker.address</name><value>$namenodeip:54311</value></property><property><name>mapreduce.framework.name</name><value>yarn</value></property><property><name>yarn.nodemanager.vmem-check-enabled</name><value>false</value></property><property><name>yarn.app.mapreduce.am.env</name><value>HADOOP_MAPRED_HOME=\${HADOOP_HOME}</value></property><property><name>mapreduce.map.env</name><value>HADOOP_MAPRED_HOME=\${HADOOP_HOME}</value></property><property><name>mapreduce.reduce.env</name><value>HADOOP_MAPRED_HOME=\${HADOOP_HOME}</value></property></configuration>" > ./hadoop/etc/hadoop/mapred-site.xml
 
-echo "alias hadoop=\"~/hadoop/hadoop-3.1.4/bin/hadoop\"
-source ~/hadoop/etc/hadoop/hadoop-env.sh" >> ~/.bashrc
+echo "source ~/hadoop/etc/hadoop/hadoop-env.sh" >> ~/.bashrc
 source ~/.bashrc
 
 
@@ -66,9 +65,10 @@ sudo mkdir -p /usr/local/hadoop/hdfs/data
 sudo chown -R hadoop:hadoop /usr/local/hadoop/hdfs/data
 echo \"<configuration><property><name>fs.default.name</name><value>hdfs://$namenodeip:9000/</value></property></configuration>\" > ./hadoop/etc/hadoop/core-site.xml
 echo \"
-<configuration><property><name>yarn.nodemanager.aux-services</name><value>mapreduce_shuffle</value></property>
+<configuration>
+<property><name>yarn.resourcemanager.hostname</name><value>10.148.0.3</value></property>
+<property><name>yarn.nodemanager.aux-services</name><value>mapreduce_shuffle</value></property>
 <property><name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name><value>org.apache.hadoop.mapred.ShuffleHandler</value></property></configuration>\" > ./hadoop/etc/hadoop/yarn-site.xml
-echo \"alias hadoop=\"~/hadoop/hadoop-3.1.4/bin/hadoop\"
-source ~/hadoop/etc/hadoop/hadoop-env.sh\" >> ~/.bashrc
+echo \"source ~/hadoop/etc/hadoop/hadoop-env.sh\" >> ~/.bashrc
 source ~/.bashrc
 " >> ./hadoop-worker.sh
