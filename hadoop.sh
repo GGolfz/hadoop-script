@@ -59,15 +59,6 @@ export HADOOP_HOME=/home/hadoop/hadoop\" > ./hadoop/etc/hadoop/hadoop-env.sh
 source ./hadoop/etc/hadoop/hadoop-env.sh
 sudo mkdir -p /usr/local/hadoop/hdfs/data
 sudo chown -R hadoop:hadoop /usr/local/hadoop/hdfs/data
-
-echo \"$namenodeip\" > ./hadoop/etc/hadoop/masters
-rm ./hadoop/etc/hadoop/workers" > ./hadoop-worker.sh
-
-for i in ${datanode[*]}
-do
-    echo "echo $i >> ./hadoop/etc/hadoop/workers" >> ./hadoop-worker.sh
-done
-echo "
 echo \"<configuration><property><name>fs.default.name</name><value>hdfs://$namenodeip:9000/</value></property></configuration>\" > ./hadoop/etc/hadoop/core-site.xml
 echo \"
 <configuration><property><name>yarn.nodemanager.aux-services</name><value>mapreduce_shuffle</value></property>
